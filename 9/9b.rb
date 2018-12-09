@@ -1,7 +1,7 @@
-input = File.readlines("test_input")[0].split(" ")
+input = File.readlines("input")[0].split(" ")
 
 players = input[0].to_i
-marbles = input[6].to_i
+marbles = input[6].to_i * 100
 
 puts players
 puts marbles
@@ -26,18 +26,12 @@ while playedMarble < marbles
 			currentMarble = 1
 			currentGame << playedMarble
 		else 
-			if currentMarble + 1 >= currentGame.size
-				print "Jump over end in round #{playedMarble}\n"
-			end
-
 			nextPosition = ((currentMarble + 1) % currentGame.size + 1)
 			currentMarble = nextPosition
 			currentGame.insert(currentMarble, playedMarble)
 		end
 	end
 
-	# print "Player: #{player} Game: #{currentGame}\n"
-	
 	if playedMarble % 100 == 0
 		puts playedMarble
 	end
